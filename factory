@@ -1,0 +1,41 @@
+interface IFruit //接口
+{
+	public void eat() ;
+}
+class Factory  //工厂模式
+{
+	public static IFruit getInstance(String className) {
+		if ("apple".equals(className))
+		{
+			return new Apple() ;
+		}
+		if ("orange".equals(className))
+		{
+			return new Orange() ;
+		}
+		return null ;
+	}
+}
+class Apple implements IFruit  //苹果类
+{
+	public void eat() {
+		System.out.println("削皮吃苹果！") ;
+	}
+}
+class Orange implements IFruit   //橘子类
+{
+	public void eat() {
+		System.out.println("剥皮吃橘子！") ;
+	}
+}
+class nov1114
+{
+	public static void main(String args[]) {
+		if (args.length < 1)
+		{
+			System.exit(1) ;
+		}
+		IFruit fruit = Factory.getInstance(args[0]) ;
+		fruit.eat() ;
+	}
+}
